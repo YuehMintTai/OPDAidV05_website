@@ -1,0 +1,74 @@
+{%block title%}{{title}}{%endblock%}
+{%block content%}
+<!DOCTYPE html>
+<head>
+<title>人工智能協助憂鬱診斷</title>
+<style>
+.container{
+background-color: lightyellow;
+display:grid;
+grid-template-columns: auto;
+grid-template-raws:1fr 3fr 1fr 4fr;
+grid-template-areas:
+"title"
+"forms"
+"buttons"
+"results";
+}
+.myTitle{grid-area:title;}
+.myForm{grid-area:forms;background-color:lightgreen;}
+.myButtons{grid-area:buttons;background-color:lightblue;}
+.myResult{grid-area:results;background-color:lightgray;}
+
+.myHistory{width:95%;}
+@media screen and (min-width:34em){
+.container{
+background-color: lightyellow;
+display:grid;
+grid-template-columns: 2fr, 1fr;
+grid-template-raws:auto, 2fr, 1fr;
+grid-template-areas:
+"title title"
+"forms results"
+"buttons results";
+}
+}
+</style>
+</head>
+<body>
+<div class='container'>
+<h2 class='myTitle'>人工智能憂鬱診斷協助功能(實驗中)</h2><!--myTitle-->
+<div class='myForm'>
+<form method="POST">
+<textarea id="myHistory" name="myHistory" rows="20" cols="50">
+  {{myHx}}
+</textarea>
+</div><!--myForm-->
+<div class='myButtons'>
+<br>
+  <button type='button' onclick='click1()'>參考個案1</button>
+  <button type='button' onclick='click2()'>參考個案2</button>
+  <button type='button' onclick='click3()'>參考個案3</button>
+  <input type="submit" value="開始預測">
+</form>
+</div><!--myButtons-->
+<div class='myResult'>
+<br>
+現在病史:</h1><br>{{myHx}}<br>
+<h3>憂鬱症預測結果: {{myPredict}}</h3>
+注意:以上內容仍為實驗階段,不提供臨床參考。
+</div><!--myResult-->
+</div>
+{%endblock%}
+
+<script>
+function click1(){
+  document.getElementById('myHistory').innerHTML='個案3歲發燒後聽力缺損,口語能力可,高一肄未服役,曾因憂鬱幻聽(天花板腳步聲,電波干擾)。106年起使用安非他命,出現妄想(手機被入侵)曾毆打妻子,於本院106/6住院,出院後仍使用安非他命,110/7再有幻聽及被害妄想家暴妻孩。入院前吸安是110/7/14。住院後可看嘴型及筆談, 抱怨腹脹胃痛及失眠,曾因抽菸問題與病友爭執。'
+}
+function click2(){
+  document.getElementById('myHistory').innerHTML='據個案自述，國小國中成績倒數，個性內向，朋友不多，最高學歷高職肄業，有機車駕照，一次就過，個案國中時常打架、翹課被記過，也曾把人打到住院但並未留下前科，曾到過工廠工作，覺得工作辛苦，持續不到一年，收入最高兩萬多元，個案16歲時開始使用搖頭丸、K他命等，搖頭丸從一開始一次吃一顆到一次吃10顆，K他命從原本一天0.5克到一天2克，到兩年前答應母親要求而戒掉，使用搖頭丸、K他命並不影響生活作息，國中開始喝酒（多為烈酒），量越來越大，不喝時會出現手抖、失眠、焦慮不安、幻聽（叫個案名字），亦曾多次想戒酒但都未成功，也曾因喝酒而導致胃及十二指腸潰瘍，做過胃鏡而繼續喝酒，最後一次喝酒為三個月之前，個案否認躁症相關病史及幻聽幻視。個案一年多年前曾吞過數十顆安眠藥自殺，當時即開始出現心情低落、失眠（入睡難及早醒）、胃口差，人生無望，96.4.3入伍，96.5.11下部隊，在部隊中覺得壓力很大，無法適應學長學弟制，出現心情低落、失眠（入睡難及早醒）、胃口差，人生無望反覆想死等念頭，（約一到兩天想一次但無特定計畫）等，近一個月曾跑到部隊營舍頂樓欲跳樓兩次，昨天在部隊割腕，故由部隊帶至本院就診。'
+}
+function click3(){
+  document.getElementById('myHistory').innerHTML='個案於101年12月12日成功嶺入伍，入伍後適應狀況尚可，3月8日下部隊至現在單位，在部隊內但擔任副班長職務，覺得自己在部隊的壓力大，覺得每天都很鬱悶、緊張，失去興趣或喜樂(看電視、上網)，放假也不想出門、食慾差（3個禮拜下降3公斤）、失眠（難入睡早醒）、每天都很疲勞沒有活力、做事情難以專心或集中注意力、因此常被長官責罵，昨日在部隊情緒低落，拿剪刀畫傷左手臂紓解壓力，目前否認有自殺的想法，個案在部隊幾乎無法完成長官交代的任務，所以由長官帶至本院門診求診。個案國2時有曾因功課壓力曾拿刀畫傷手臂，否認有其他自傷行為。過去未有過精神科就診紀錄。否認過去有躁症經驗，否認過去有幻聽及妄想經驗，否認有物質濫用經驗。個案覺得自己個性內向，人際關係普通。國中成績倒數(學的慢，也沒有在唸)，國小成績表示忘記了，最高學歷為高職畢業(101.6)，在校曾因偷抽菸被記過2.3次，否認有其他違規紀錄，有前科紀錄(101.8月朋友的子彈掉在車上，因而被判緩刑三年)。個案未曾在外面工作。個案無機車駕照（筆試考一次通過，路考未通過）。'
+}
+</script>
